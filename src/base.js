@@ -13,10 +13,16 @@ class Base extends EventEmitter {
     this.bodyAttributes = [];
   }
 
-  addSoapHeader(value, qname, options) {
-    var header = new SOAPElement(value, qname, options);
+  addSoapHeader(name, value, qname, options) {
+    var header = new SOAPElement(name, value, qname, options);
     return this.soapHeaders.push(header) - 1;
   }
+
+  changeSoapHeader(index, name, value, qname, options) {
+    var header = new SOAPElement(name, value, qname, options);
+    this.soapHeaders[index] = header;
+  }
+
 
   getSoapHeaders() {
     return this.soapHeaders;
